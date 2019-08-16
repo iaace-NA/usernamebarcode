@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>iaace's Username Barcode Generator</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=500, initial-scale=1">
+	<meta name="description" content="UBG is an alike-character random sequence generator. Created by iaace">
+	<meta name="creator" content="iaace">
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+	<style>
+		*{
+			font-family: sans-serif;
+			color: white;
+			background-color:black;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Username Barcode Generator</h1>
+	Number of characters: <input type="number" id="n1" min="1" value="16"><br>
+	Characters to use: <input type="text" id="t1" value="lI1"><br>
+	<button type="button" onclick="generate();">Generate</button><br><br>
+	Output: <textarea name="o1" id="o1" autocomplete="off" cols="60" rows="1" wrap="soft"></textarea><br>
+	Readable output: <textarea name="o2" id="o2" autocomplete="off" cols="60" rows="1" wrap="soft" style="font-family:monospace;"></textarea>
+	<script>
+		"use strict";
+		function generateString(allowed_chars) {
+			let ans = "";
+			for (let i = 0; i < document.getElementById("n1").value; ++i) {
+				ans += allowed_chars[Math.floor(Math.random() * allowed_chars.length)];
+			}
+			return ans;
+		}
+		function generate() {
+			const new_barcode = generateString(document.getElementById("t1").value);
+			document.getElementById("o1").value = new_barcode;
+			document.getElementById("o2").value = new_barcode;
+		}
+	</script>
+</body>
+
+</html>
